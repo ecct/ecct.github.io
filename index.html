@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>珠海财通网络科技有限公司</title>
+	<meta name="description" content="">
+	<link rel="stylesheet" type="text/css" href="src/stylus/loading.css">
+</head>
+<body>
+	<div id="app" :class="{
+	'iconClose' : submenuHide, 
+	'showLangMenu' : showLangMenu, 
+	'removeLangMenu' : removeLangMenu, 
+	'ShowSubmenu' : !submenuHide, 
+	'BoxShow' : boxShow,
+	'BoxShow80' : !submenuHide || showLangMenu || nextPage}">
+		<div class="Loading" v-if="!isLoad">
+			<div class="load-3">
+				<div class="k-line k-line11-1"></div>
+				<div class="k-line k-line11-2"></div>
+				<div class="k-line k-line11-3"></div>
+				<div class="k-line k-line11-4"></div>
+				<div class="k-line k-line11-5"></div>
+			</div>
+		</div>
+		<div class="popbg" @click="_selectLang(5)"></div>
+		<div class="wrap">
+			<div class="header">
+				<dl>
+					<dt @click="_showLangMenu()">EN</dt>
+					<dd v-for="(val, index) in langMenu" v-html="val" @click="_selectLang(index)"></dd>
+				</dl>
+				<div @click="_showSubmenu" class="icon"><span></span><span></span></div>
+				<h1>ECCT.CC</h1>
+			</div>
+			<div class="box">
+				<h2 v-html="pages.title + '<span></span>'"></h2>
+				<p v-if="pages.description" v-html="pages.description"></p>
+				<ul v-if="pageindex === 2" class="web-list">
+					<li v-for="key in pages.services" v-html="key"></li>
+				</ul>
+				<ul v-else="pageindex === 3" class="content-list">
+					<li v-for="key in pages.content" v-html="key"></li>
+				</ul>
+				<a v-if="pageindex === 1" class="button" href="https://www.baidu.com" target="_bank">Apply now</a>
+				<span class="mun" v-html="pageindex + 1 +' / '+menu.length"></span>
+				<span class="next" @click="_onNext">NEXT</span>
+			</div>
+			<div class="copyright">copyright 2018 - 2022</div>
+		</div>
+		<dl class="submenu">
+			<dt>MENU</dt>
+			<dd v-for="(key, index) in menu" 
+			    v-html="key" 
+			    :class="{'Stand' : index === pageindex}" 
+			    @click="_selectPage(index)"></dd>
+		</dl>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script type="text/javascript" src="dist/app.js"></script>
+</body>
+</html>
