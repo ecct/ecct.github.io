@@ -1,0 +1,390 @@
+@import "./reset"
+@import "./config"
+
+
+menuWidth = 95px + 10px
+.header
+	width 100%
+	height 50px
+	line-height 50px
+	background-color rgba(255,255,255,.8)
+	position fixed
+	top 0
+	left 0
+	z-index 100
+	box-shadow 0 2px 5px rgba(0,0,0,.1)
+	.logo
+		width 137px
+		height 24px
+		float left
+		margin-top 8px
+		background-image url('../images/logo.png')
+	.menu
+		float right
+		position relative
+		a
+		&:before
+			width 95px
+			margin-left 10px
+		a
+			display inline-block
+			text-align center
+			font-size 13px
+			letter-spacing 2px
+			color base-color-1
+		&:before
+			animated(.1s)
+			content ''
+			position absolute
+			bottom 0
+			height 3px
+			background-color base-color-1
+		&.stand-1:before
+			left menuWidth*0
+		&.stand-2:before
+			left menuWidth*1
+		&.stand-3:before
+			left menuWidth*2
+		&.stand-4:before
+			left menuWidth*3
+		&.stand-5:before
+			left menuWidth*4
+			
+		
+
+.banner
+	font-size 34px
+	height 500px
+	padding-top 110px
+	width 100%
+	background-image url('../images/banner.jpg')
+	background-size 100% auto
+	background-repeat no-repeat
+	box-sizing border-box
+	cursor default
+	.cn
+		color white
+		font-weight bold
+		letter-spacing 6px
+		margin-top 25px
+		margin-bottom 10px
+		text-shadow 1px 1px #555,
+			2px 2px #666,
+			3px 3px #777,
+			4px 4px #888,
+			5px 5px #999,
+			6px 6px #aaa,
+			7px 7px #bbb
+	.en
+		font-size 14px
+		color base-color-1
+		font-variant small-caps
+		line-height 1.7em
+		letter-spacing 3px
+	p
+		opacity 0
+		&:nth-child(3)
+		&:nth-child(4)
+			margin-left 35px
+		&:nth-child(5)
+		&:nth-child(6)
+			margin-left 70px
+	&.Animated
+		p
+			animation-name animate-left-show
+			animation-duration .3s
+			animation-timing-function linear
+			animation-fill-mode forwards
+			for num in 1 2 3 4 5 6
+				&:nth-child({num})
+					animation-delay num * .4s
+
+
+@keyframes animate-left-show
+	0%
+		transform translateX(30px)
+	100%
+		transform translateX(0)
+		opacity 1
+
+.head
+	font-size 20px
+	text-align center
+	line-height 30px
+	padding-top 50px
+	padding-bottom 30px
+	letter-spacing 5px
+	h5
+		font-weight bold
+		text-shadow 1px 1px white, 3px 3px base-color-1-light, -2px -2px base-color-2-light
+	h6
+		font-size .65em
+		color #999
+		font-variant small-caps
+
+server-width = 	320px
+server-height = 490px
+server-img-width = 	392px
+server-deg = 8deg
+.Server
+	.list
+		font-size 0
+		padding-bottom 30px
+		text-align center
+		cursor default
+		dd
+		.bg-img
+		.bg-color
+			display inline-block
+			width server-width
+			height server-height
+		dd
+			animated(.2s)
+			position relative
+			font-size 18px
+			background-color #ddd
+			transform:skew(-(server-deg), 0)
+			overflow hidden
+			background-position-y 0
+			&:hover
+				transform skew(-(server-deg), 0) translateY(-15px)
+				box-shadow 1px 10px 15px rgba(0,0,0,.4)
+				z-index 5
+				.bg-img
+					filter blur(5px)
+				.bg-color
+					opacity .5
+				.content
+					.icon
+					h6
+						background-color rgba(255,255,255,0)
+					.icon
+						transform translateY(-50px)
+					h6
+						delayTime(.1s)
+						transform translateY(-95px)
+					.line
+						delayTime(.2s)
+						opacity 1
+						transform translateY(-88px)
+					p
+						opacity 1
+						&:nth-child(5)
+							delayTime(.3s)
+							transform translateY(-65px)
+						&:nth-child(6)
+							delayTime(.4s)
+							transform translateY(-50px)
+					
+		.bg-img
+		.bg-color
+			animated(.2s)
+			width server-img-width
+		.bg-color
+		.content
+			width 100%
+			height 100%
+			position absolute
+			top 0
+			left 0
+		.bg-img
+			z-index 1
+			background-image url('../images/server.png')
+			background-size (server-img-width * 4) server-height
+			transform skew(server-deg, 0) translate(-38px, 0)
+		.bg-color
+			z-index 2
+			background-color base-color-1-light
+			opacity 0
+		.content
+			z-index 3
+			width 250px
+			transform skew(server-deg, 0)
+			left 34px
+			// text-shadow 1px 1px rgba(255,255,255,.5)
+			.icon
+			h6
+				animated(.5s)
+				display inline-block
+				background-color rgba(255,255,255,.8)
+			.icon
+				width 55px
+				height 55px
+				padding 15px
+				border-radius 50%
+				background-image url('../images/icon.png')
+				margin 150px 0 30px
+				background-position-x 0
+			h6
+				font-weight bold
+				letter-spacing 5px
+				padding 15px 20px
+			.line
+				animated(.5s)
+				opacity 0
+				height 4px
+				background-color base-color-1
+				margin 0 100px
+				border-radius 2px
+				position relative
+				&:before
+					content ''
+					display inline-block
+					width 8px
+					height 4px
+					border-radius 2px
+					background-color base-color-2
+					position absolute
+					top 0
+					left -12px
+			p
+				animated(.5s)
+				opacity 0
+				font-size 18px
+				font-weight bold
+				letter-spacing 5px
+		for num in 1 2 3 4
+			dd:nth-child({num})
+				.bg-img
+					background-position-x - server-img-width * (num - 1)
+				.icon
+					background-position-y -85px * (num - 1)
+	
+
+
+box-size = 140px
+
+.Process
+	text-align center
+	background-color #fafafa
+	.list
+		padding-bottom 80px
+		dd
+			position relative
+			display inline-block
+			margin-left 25px
+			margin-right 25px
+			cursor default
+			div
+				font-size 14px
+				font-weight bold
+				letter-spacing 2px
+				width box-size
+				height box-size
+				line-height box-size + 35px
+				border-radius 50%
+				border 2px dashed #aaa
+				position relative
+				z-index 1
+				box-sizing border-box
+				overflow hidden
+				background-position center 40px
+				background-size 30px auto
+				background-repeat no-repeat
+			&:nth-child(1) > div
+				background-image url('../images/icons/prototype.png')
+			&:nth-child(2) > div
+				background-image url('../images/icons/UI.png')
+			&:nth-child(3) > div
+				background-image url('../images/icons/skill.png')
+			&:nth-child(4) > div
+				background-image url('../images/icons/test.png')
+			&:nth-child(5) > div
+				background-image url('../images/icons/maintain.png')
+			&:first-child
+				margin-left 0
+			&:last-child
+				margin-right 0
+			&:after
+			&:before
+				content ''
+				width box-size
+				height box-size
+				border-radius 50%
+				position absolute
+			&:after
+				background-color rgba(138, 196, 249, .15)
+				top -8px
+				left -8px
+			&:before
+				background-color rgba(249, 197, 134, .2)
+				top 8px
+				left 8px
+
+
+
+.About
+	height 450px
+	background-image url('../images/about-bg.jpg')
+	background-size 100% auto
+	background-position center 0
+	.wrap
+		letter-spacing 3px
+		line-height 2em
+		h3
+			color #444
+			font-size 20px
+			font-weight bold
+			padding-top 5px
+		h4
+			font-size 13px
+			color #999
+		.logo
+			width 300px
+			height 240px
+			float left
+			background-image url('../images/about-logo.png')
+			background-repeat no-repeat
+			background-size 210px auto
+			background-position-x 40px
+		p
+			color #555
+			font-size 16px
+			
+.Contact
+	height 350px
+	padding-bottom 50px
+	.card
+		background-color #fafafa
+		font-size 16px
+		line-height 2em
+		letter-spacing 3px
+		background-color white
+		width 400px
+		padding 20px 40px
+		margin-left auto
+		margin-right auto
+		border 2px dashed #ccc
+		border-radius 10px
+		box-shadow 15px 15px rgba(249,197,134,0.2), -15px -15px rgba(138,196,249,0.15)
+		li
+			padding 10px
+			border-bottom 1px #ccc dashed
+			&:last-child
+				border-bottom 0 none
+		span:nth-child(1)
+			font-size .8em
+			color #888
+			display inline-block
+			width 80px
+
+.Footer
+	height 120px
+	background-color #ccbeae
+	box-shadow inset 1px 0 20px rgba(0,0,0,.1)
+	.wrap
+		color white
+		letter-spacing 2px
+		height 120px
+		padding-left 220px
+		background url('../images/footer-logo.png') no-repeat 0 35px
+		background-size auto 50px
+		.menu
+			padding-top 40px
+			font-size 14px
+			span
+				margin-right 15px
+		p
+			margin-top 15px
+			font-size 12px
+	

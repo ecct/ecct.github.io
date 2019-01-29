@@ -5,59 +5,94 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<title>珠海财通网络科技有限公司</title>
 	<meta name="description" content="">
-	<link rel="stylesheet" type="text/css" href="src/stylus/loading.css">
 </head>
 <body>
-	<div id="app" :class="{
-	'iconClose' : submenuHide, 
-	'showLangMenu' : showLangMenu, 
-	'removeLangMenu' : removeLangMenu, 
-	'ShowSubmenu' : !submenuHide, 
-	'BoxShow' : boxShow,
-	'BoxShow80' : !submenuHide || showLangMenu || nextPage}">
-		<div class="Loading" v-if="!isLoad">
-			<div class="load-3">
-				<div class="k-line k-line11-1"></div>
-				<div class="k-line k-line11-2"></div>
-				<div class="k-line k-line11-3"></div>
-				<div class="k-line k-line11-4"></div>
-				<div class="k-line k-line11-5"></div>
+	<div id="app">
+		<div class="header">
+			<div class="wrap">
+				<h1 class="logo"><a href="###"></a></h1>
+				<div class="menu" :class="mStand">
+					<a v-for="m,i in menu" @mouseover="MenuHover(i)" href="###" v-html="m.title"></a>
+				</div>
 			</div>
 		</div>
-		<div class="popbg" @click="_selectLang(5)"></div>
-		<div class="wrap">
-			<div class="header">
-				<dl>
-					<dt @click="_showLangMenu()">EN</dt>
-					<dd v-for="(val, index) in langMenu" v-html="val" @click="_selectLang(index)"></dd>
-				</dl>
-				<div @click="_showSubmenu" class="icon"><span></span><span></span></div>
-				<h1>ECCT.CC</h1>
+		<div class="banner" ref="banner">
+			<div class="wrap">
+				<template v-for="p in header">
+					<p class="cn" v-html="p.des_cn"></p>
+					<p class="en" v-html="p.des_en"></p>
+				</template>
 			</div>
-			<div class="box">
-				<h2 v-html="pages.title + '<span></span>'"></h2>
-				<p v-if="pages.description" v-html="pages.description"></p>
-				<ul v-if="pageindex === 2" class="web-list">
-					<li v-for="key in pages.services" v-html="key"></li>
-				</ul>
-				<ul v-else="pageindex === 3" class="content-list">
-					<li v-for="key in pages.content" v-html="key"></li>
-				</ul>
-				<a v-if="pageindex === 1" class="button" href="https://www.baidu.com" target="_bank">Apply now</a>
-				<span class="mun" v-html="pageindex + 1 +' / '+menu.length"></span>
-				<span class="next" @click="_onNext">NEXT</span>
-			</div>
-			<div class="copyright">copyright 2018 - 2022</div>
 		</div>
-		<dl class="submenu">
-			<dt>MENU</dt>
-			<dd v-for="(key, index) in menu" 
-			    v-html="key" 
-			    :class="{'Stand' : index === pageindex}" 
-			    @click="_selectPage(index)"></dd>
-		</dl>
+		<div class="Server" ref="Server">
+			<div class="head">
+				<h5 v-html="server.head.title"></h5>
+				<h6 v-html="server.head.description"></h6>
+			</div>
+			<dl class="list">
+				<dd v-for="s in server.list">
+					<div class="bg-img"></div>
+					<div class="bg-color"></div>
+					<div class="content">
+						<span class="icon"></span>
+						<br>
+						<h6 v-html="s.title"></h6>
+						<div class="line"></div>
+						<p v-html="server.des[0]"></p>
+						<p v-html="server.des[1]"></p>
+					</div>
+				</dd>
+			</dl>
+		</div>
+		<div class="Process" ref="Process">
+			<div class="head">
+				<h5 v-html="process.head.title"></h5>
+				<h6 v-html="process.head.description"></h6>
+			</div>
+			<dl class="wrap list">
+				<dd v-for="pro in process.list">
+					<div v-html="pro.title"></div>
+				</dd>
+			</dl>
+		</div>
+
+		<div class="About" ref="About">
+			<div class="head">
+				<h5 v-html="about.head.title"></h5>
+				<h6 v-html="about.head.description"></h6>
+			</div>
+			<div class="wrap">
+				<div class="logo"></div>
+				<h3 v-html="about.content.name_cn"></h3>
+				<h4 v-html="about.content.name_en"></h4>
+				<p v-html="about.content.description"></p>
+			</div>
+		</div>
+
+		<div class="Contact" ref="Contact">
+			<div class="head">
+				<h5 v-html="contact.head.title"></h5>
+				<h6 v-html="contact.head.description"></h6>
+			</div>
+			<ul class="card">
+				<li v-for="val,key in contact.content">
+					<span v-html="key + ':'"></span>
+					<span v-html="val"></span>
+				</li>
+			</ul>
+		</div>
+
+		<div class="Footer">
+			<div class="wrap">
+				<div class="menu">
+					<span v-for="m in footer.menu" v-html="m.title"></span>
+				</div>
+				<p v-html="footer.copyright"></p>
+			</div>
+		</div>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+	<script src="src/vue.js"></script>
 	<script type="text/javascript" src="dist/app.js"></script>
 </body>
 </html>
