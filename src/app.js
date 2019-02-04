@@ -1,4 +1,5 @@
 import './stylus/index.styl'
+import './stylus/media.styl'
 import {data} from './data/data.js'
 
 
@@ -58,7 +59,6 @@ var app = new Vue({
 		SCROLL_TOP(n, o) {
 			// console.log(n, o)
 			if(n < this.heightArr[0]){
-				console.log(n + ' <' + this.heightArr[0])
 				this.mStand = 'stand-1'
 			}else if(n < this.heightArr[1]){
 				this.mStand = 'stand-2'

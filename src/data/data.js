@@ -98,7 +98,7 @@ export var data = {
 			name_cn: '珠海财通网络有限公司',
 			name_en: 'Zhuhai Caiton Network Co., Ltd.',
 			logo: '../images/logo-big.png',
-			description: '财通网络2018年创立于美丽的滨海城市，是一家专注于网络产品开发的软件公司，如果你刚好有网络开发的需求，可以通过下面的联系方式联系我们，我们将为你提供专业的网络开发服务。'
+			description: '财通网络2018年创立于美丽的滨海城市珠海，是一家专注于网络产品开发的软件公司，如果你刚好有网络开发的需求，可以通过下面的联系方式联系我们，我们将为你提供专业的网络开发服务。'
 		}
 		return aboutObj
 	},

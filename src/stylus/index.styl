@@ -57,9 +57,11 @@ menuWidth = 95px + 10px
 	height 500px
 	padding-top 110px
 	width 100%
+	overflow hidden
 	background-image url('../images/banner.jpg')
 	background-size 100% auto
 	background-repeat no-repeat
+	background-color #f5f5f5
 	box-sizing border-box
 	cursor default
 	.cn
@@ -139,42 +141,43 @@ server-deg = 8deg
 			width server-width
 			height server-height
 		dd
-			animated(.2s)
 			position relative
 			font-size 18px
 			background-color #ddd
-			transform:skew(-(server-deg), 0)
 			overflow hidden
 			background-position-y 0
-			&:hover
-				transform skew(-(server-deg), 0) translateY(-15px)
-				box-shadow 1px 10px 15px rgba(0,0,0,.4)
-				z-index 5
-				.bg-img
-					filter blur(5px)
-				.bg-color
-					opacity .5
-				.content
-					.icon
-					h6
-						background-color rgba(255,255,255,0)
-					.icon
-						transform translateY(-50px)
-					h6
-						delayTime(.1s)
-						transform translateY(-95px)
-					.line
-						delayTime(.2s)
-						opacity 1
-						transform translateY(-88px)
-					p
-						opacity 1
-						&:nth-child(5)
-							delayTime(.3s)
-							transform translateY(-65px)
-						&:nth-child(6)
-							delayTime(.4s)
+			@media screen and (min-width:768px)
+				animated(.2s)
+				transform:skew(-(server-deg), 0)
+				&:hover
+					transform skew(-(server-deg), 0) translateY(-15px)
+					box-shadow 1px 10px 15px rgba(0,0,0,.4)
+					z-index 5
+					.bg-img
+						filter blur(5px)
+					.bg-color
+						opacity .5
+					.content
+						.icon
+						h6
+							background-color rgba(255,255,255,0)
+						.icon
 							transform translateY(-50px)
+						h6
+							delayTime(.1s)
+							transform translateY(-95px)
+						.line
+							delayTime(.2s)
+							opacity 1
+							transform translateY(-88px)
+						p
+							opacity 1
+							&:nth-child(5)
+								delayTime(.3s)
+								transform translateY(-65px)
+							&:nth-child(6)
+								delayTime(.4s)
+								transform translateY(-50px)
 					
 		.bg-img
 		.bg-color
@@ -191,7 +194,8 @@ server-deg = 8deg
 			z-index 1
 			background-image url('../images/server.png')
 			background-size (server-img-width * 4) server-height
-			transform skew(server-deg, 0) translate(-38px, 0)
+			@media screen and (min-width:768px)
+				transform skew(server-deg, 0) translate(-38px, 0)
 		.bg-color
 			z-index 2
 			background-color base-color-1-light
@@ -199,8 +203,9 @@ server-deg = 8deg
 		.content
 			z-index 3
 			width 250px
-			transform skew(server-deg, 0)
 			left 34px
+			@media screen and (min-width:768px)
+				transform skew(server-deg, 0)
 			// text-shadow 1px 1px rgba(255,255,255,.5)
 			.icon
 			h6
@@ -253,7 +258,7 @@ server-deg = 8deg
 
 
 box-size = 140px
-
+box-size-small = 120px
 .Process
 	text-align center
 	background-color #fafafa
@@ -281,6 +286,10 @@ box-size = 140px
 				background-position center 40px
 				background-size 30px auto
 				background-repeat no-repeat
+				@media screen and (max-width:768px)
+					width box-size-small
+					height box-size-small
+					line-height box-size-small + 35px
 			&:nth-child(1) > div
 				background-image url('../images/icons/prototype.png')
 			&:nth-child(2) > div
@@ -298,10 +307,13 @@ box-size = 140px
 			&:after
 			&:before
 				content ''
-				width box-size
-				height box-size
 				border-radius 50%
 				position absolute
+				width box-size
+				height box-size
+				@media screen and (max-width:768px)
+					width box-size-small
+					height box-size-small
 			&:after
 				background-color rgba(138, 196, 249, .15)
 				top -8px
@@ -369,7 +381,7 @@ box-size = 140px
 			width 80px
 
 .Footer
-	height 120px
+	// height 120px
 	background-color #ccbeae
 	box-shadow inset 1px 0 20px rgba(0,0,0,.1)
 	.wrap
